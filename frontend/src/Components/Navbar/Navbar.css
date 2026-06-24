@@ -1,0 +1,160 @@
+/* ── Google Font ── */
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── Navbar shell ── */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+
+  background-color: #0d1117;
+  padding: 0 28px;
+  height: 60px;
+
+  font-family: "Inter", sans-serif;
+  position: relative;
+  z-index: 100;
+}
+
+/* ── Logo ── */
+.logo {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #00e5d1; /* cyan–teal brand color */
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Nav links ── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  margin-left: 100px;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links li {
+  font-size: 14px;
+  font-weight: 500;
+  color: #b0b8c8;
+  cursor: pointer;
+  padding: 4px 0;
+  position: relative;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-links li:hover {
+  color: #ffffff;
+}
+
+/* active underline */
+.nav-links li.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.nav-links li.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+/* ── Push actions to the right ── */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+/* ── Icon buttons (bell, cart) ── */
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #b0b8c8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: color 0.2s ease;
+}
+
+.icon-btn:hover {
+  color: #ffffff;
+}
+
+/* ── "Go Pro" CTA ── */
+.go-pro-btn {
+  background: #00e5d1;
+  color: #0d1117;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+  white-space: nowrap;
+}
+
+.go-pro-btn:hover {
+  background: #00cfc0;
+}
+
+.go-pro-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Avatar ── */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #2a3040;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.avatar:hover {
+  border-color: #00e5d1;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .nav-links {
+    display: none;
+  }
+
+  .navbar {
+    gap: 0;
+    justify-content: space-between;
+  }
+}
