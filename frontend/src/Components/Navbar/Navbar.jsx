@@ -7,9 +7,9 @@ const Navbar = () => {
       <span className="logo">PlaySphere</span>
 
       <ul className="nav-links">
-        <li>Arena</li>
+        <li className="active">Arena</li>
         <li>Tournaments</li>
-        <li className="active">Market</li>
+        <li>Market</li>
         <li>Stream</li>
       </ul>
 
