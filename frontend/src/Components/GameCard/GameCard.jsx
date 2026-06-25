@@ -68,11 +68,23 @@ const GameDetail = () => {
             </button>
           ))}
         </div>
-
-        
-        
-
-        
+        {/* Mission Briefing */}
+        <div className="mission-brief">
+          <h2 className="section-title">Mission Briefing</h2>
+          <p>
+            Shadow Protocol: Apex is a high-fidelity tactical simulation
+            designed for the elite. Set in the year 2089, you take control of an
+            Apex Specter — a cybernetically enhanced operator tasked with
+            disrupting the invisible web of corporate espionage and
+            techno-terrorism.
+          </p>
+          <p>
+            Powered by the "Athena-v3" combat engine, achive your reaction times
+            are enhanced by a real-time AI assistant, allowing for
+            guerrilla-satisfying maneuvers and split-second tactical decisions
+            that determine the fate of entire sectors.
+          </p>
+        </div>
       </div>
     </section>
   );

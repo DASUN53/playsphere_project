@@ -59,7 +59,40 @@
 .thumb:hover {
   border-color: rgba(0, 229, 209, 0.5);
 }
+/* Mission Briefing */
+.mission-brief {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+}
 
+.section-title {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mission-brief p {
+  font-size: 13.5px;
+  color: rgb(191, 191, 191);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+.mission-brief p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── RIGHT ── */
+.gd-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .game-detail {
