@@ -68,6 +68,7 @@ const GameDetail = () => {
             </button>
           ))}
         </div>
+
         {/* Mission Briefing */}
         <div className="mission-brief">
           <h2 className="section-title">Mission Briefing</h2>
@@ -85,22 +86,22 @@ const GameDetail = () => {
             that determine the fate of entire sectors.
           </p>
         </div>
-        {/* Key Features */}
-        <div className="gd-right">
-          <div className="features-panel">
-            <h3 className="panel-title">Key Features</h3>
-            <ul className="features-list">
-              {features.map((f, i) => (
-                <li key={i} className="feature-item">
-                  <span className="feature-icon">{f.icon}</span>
-                  <div>
-                    <div className="feature-label">{f.label}</div>
-                    <div className="feature-desc">{f.desc}</div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+      </div>
+      {/* Key Features */}
+      <div className="gd-right">
+        <div className="features-panel">
+          <h3 className="panel-title">Key Features</h3>
+          <ul className="features-list">
+            {features.map((f, i) => (
+              <li key={i} className="feature-item">
+                <span className="feature-icon">{f.icon}</span>
+                <div>
+                  <div className="feature-label">{f.label}</div>
+                  <div className="feature-desc">{f.desc}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Purchase Panel */}
