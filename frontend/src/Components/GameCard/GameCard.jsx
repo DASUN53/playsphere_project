@@ -111,8 +111,15 @@ const GameDetail = () => {
           </div>
 
           <ul className="purchase-includes">
-            {["Full base game", "Day-1 weapon skin pack", "Ranked season pass", "Cloud save support"].map((item, i) => (
-              <li key={i}><CheckIcon /> {item}</li>
+            {[
+              "Full base game",
+              "Day-1 weapon skin pack",
+              "Ranked season pass",
+              "Cloud save support",
+            ].map((item, i) => (
+              <li key={i}>
+                <CheckIcon /> {item}
+              </li>
             ))}
           </ul>
 
