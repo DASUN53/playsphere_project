@@ -85,9 +85,8 @@ const GameDetail = () => {
             that determine the fate of entire sectors.
           </p>
         </div>
-
+        {/* Key Features */}
         <div className="gd-right">
-          {/* Key Features */}
           <div className="features-panel">
             <h3 className="panel-title">Key Features</h3>
             <ul className="features-list">
@@ -102,6 +101,23 @@ const GameDetail = () => {
               ))}
             </ul>
           </div>
+        </div>
+
+        {/* Purchase Panel */}
+        <div className="purchase-panel">
+          <div className="purchase-header">
+            <span className="purchase-label">Standard Edition</span>
+            <span className="purchase-price">$59.99</span>
+          </div>
+
+          <ul className="purchase-includes">
+            {["Full base game", "Day-1 weapon skin pack", "Ranked season pass", "Cloud save support"].map((item, i) => (
+              <li key={i}><CheckIcon /> {item}</li>
+            ))}
+          </ul>
+
+          <button className="btn-buy">Add to Cart</button>
+          <button className="btn-wishlist">Add to Wishlist</button>
         </div>
       </div>
     </section>
