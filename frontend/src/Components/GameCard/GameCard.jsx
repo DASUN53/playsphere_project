@@ -85,6 +85,24 @@ const GameDetail = () => {
             that determine the fate of entire sectors.
           </p>
         </div>
+
+        <div className="gd-right">
+          {/* Key Features */}
+          <div className="features-panel">
+            <h3 className="panel-title">Key Features</h3>
+            <ul className="features-list">
+              {features.map((f, i) => (
+                <li key={i} className="feature-item">
+                  <span className="feature-icon">{f.icon}</span>
+                  <div>
+                    <div className="feature-label">{f.label}</div>
+                    <div className="feature-desc">{f.desc}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   );
