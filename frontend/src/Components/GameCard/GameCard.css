@@ -63,7 +63,7 @@
 }
 /* Mission Briefing */
 .mission-brief {
-  background: var(--bg-card);
+  background: #0f1318;
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 24px;
@@ -99,7 +99,7 @@
 }
 
 .features-panel {
-  background: var(--bg-card);
+  background: #0f1318;
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 20px;
@@ -148,56 +148,44 @@
 
 /* Purchase Panel */
 .purchase-panel {
-  background: var(--bg-card);
+  background: #0f1318;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
 .purchase-header {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  justify-content: space-between; /* ← label left, price right */
+  flex-direction: row; /* ← same line */
+  gap: 0;
 }
 
 .purchase-label {
   font-size: 11px;
   font-weight: 600;
-  color: var(--text-muted);
+  color: white;
   text-transform: uppercase;
   letter-spacing: 0.8px;
 }
 
 .purchase-price {
   font-family: "Rajdhani", sans-serif;
-  font-size: 34px;
+  font-size: 26px;
   font-weight: 700;
-  color: #fff;
-}
-
-.purchase-includes {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.purchase-includes li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12.5px;
-  color: var(--text-soft);
+  color: cyan; /* ← cyan color like screenshot */
 }
 
 .btn-buy {
-  background: var(--cyan);
-  color: #0b0e14;
+  background: #7c3aed; /* ← purple */
+  color: #ffffff;
   border: none;
-  border-radius: 7px;
-  padding: 12px;
+  border-radius: 8px;
+  padding: 13px;
   font-size: 14px;
   font-weight: 700;
   width: 100%;
@@ -206,7 +194,7 @@
     transform 0.1s;
 }
 .btn-buy:hover {
-  background: var(--cyan-dim);
+  background: #6d28d9; /* ← darker purple on hover */
 }
 .btn-buy:active {
   transform: scale(0.98);
@@ -214,10 +202,10 @@
 
 .btn-wishlist {
   background: transparent;
-  color: var(--text-soft);
-  border: 1px solid var(--border);
-  border-radius: 7px;
-  padding: 10px;
+  color: gray;
+  border: 1px solid #2a2f3d;
+  border-radius: 8px;
+  padding: 11px;
   font-size: 13px;
   font-weight: 500;
   width: 100%;
@@ -226,10 +214,9 @@
     color 0.2s;
 }
 .btn-wishlist:hover {
-  border-color: var(--cyan);
-  color: var(--cyan);
+  border-color: white;
+  color: white;
 }
-
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .game-detail {

@@ -111,19 +111,6 @@ const GameDetail = () => {
             <span className="purchase-price">$59.99</span>
           </div>
 
-          <ul className="purchase-includes">
-            {[
-              "Full base game",
-              "Day-1 weapon skin pack",
-              "Ranked season pass",
-              "Cloud save support",
-            ].map((item, i) => (
-              <li key={i}>
-                <CheckIcon /> {item}
-              </li>
-            ))}
-          </ul>
-
           <button className="btn-buy">Add to Cart</button>
           <button className="btn-wishlist">Add to Wishlist</button>
         </div>
