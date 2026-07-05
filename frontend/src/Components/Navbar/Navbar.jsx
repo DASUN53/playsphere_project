@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import { useCart } from "../context/CartContext";
 import {
   ShoppingCart,
   User,
@@ -9,7 +7,7 @@ import {
   Gamepad2,
   ChevronDown,
 } from "lucide-react";
-import AuthModal from "./AuthModal";
+import AuthModal from "../AuthModal";
 import "./Navbar.css";
 export default function Navbar() {
   const { user, logout } = useAuth();
