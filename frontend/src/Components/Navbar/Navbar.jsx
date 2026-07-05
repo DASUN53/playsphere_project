@@ -1,60 +1,108 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  ShoppingCart,
+  User,
+  LogOut,
+  Gamepad2,
+  ChevronDown,
+} from "lucide-react";
+import AuthModal from "../AuthModal";
 import "./Navbar.css";
-
-const Navbar = () => {
+export default function Navbar() {
+  const { user, logout } = useAuth();
+  const { cart } = useCart();
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logout();
+    setDropdownOpen(false);
+    navigate("/");
+  };
   return (
-    <div className="navbar">
-      <span className="logo">PlaySphere</span>
-
-      <ul className="nav-links">
-        <li className="active">Arena</li>
-        <li>Tournaments</li>
-        <li>Market</li>
-        <li>Stream</li>
-      </ul>
-
-      <div className="nav-actions">
-        <button className="icon-btn" aria-label="Notifications">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-          </svg>
-        </button>
-
-        <button className="icon-btn" aria-label="Cart">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="9" cy="21" r="1" />
-            <circle cx="20" cy="21" r="1" />
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-          </svg>
-        </button>
-
-        <button className="go-pro-btn">Go Pro</button>
-
-        <div className="avatar">
-          <img src="https://i.pravatar.cc/36?img=8" alt="User avatar" />
+    <nav className="navbar-container glass-panel">
+      <div className="navbar-inner">
+        <Link to="/" className="navbar-logo">
+          <Gamepad2 className="logo-icon" />
+          <span>
+            PLAY<span className="logo-highlight">RUNNERS</span>
+          </span>
+        </Link>
+        <div className="navbar-links">
+          <Link to="/" className="nav-link">
+            Home
+          </Link>
+          <Link to="/store" className="nav-link">
+            Game Store
+          </Link>
+          <Link to="/events" className="nav-link">
+            Events
+          </Link>
+        </div>
+        <div className="navbar-actions">
+          <Link to="/cart" className="cart-badge-container">
+            <ShoppingCart className="action-icon" />
+            {cart.length > 0 && (
+              <span className="cart-count">{cart.length}</span>
+            )}
+          </Link>
+          {user ? (
+            <div className="user-dropdown-container">
+              <button
+                className="user-profile-btn"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+              >
+                <img
+                  src={
+                    user.avatar_url ||
+                    `https://api.dicebear.com/7.x/pixel-art/svg?seed=${user.username}`
+                  }
+                  alt="avatar"
+                  className="navbar-avatar"
+                />
+                <span className="navbar-username">{user.username}</span>
+                <ChevronDown
+                  className={`chevron ${dropdownOpen ? "rotated" : ""}`}
+                />
+              </button>
+              {dropdownOpen && (
+                <div className="navbar-dropdown glass-panel">
+                  <div className="dropdown-header">
+                    <span className="dropdown-rank">
+                      {user.rank_name || "Rookie"}
+                    </span>
+                    <span className="dropdown-level">
+                      LVL {user.level || 1}
+                    </span>
+                  </div>
+                  <hr className="dropdown-divider" />
+                  <Link
+                    to="/profile"
+                    className="dropdown-item"
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    <User className="dropdown-item-icon" />
+                    My Profile
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="dropdown-item logout-btn"
+                  >
+                    <LogOut className="dropdown-item-icon" />
+                    Sign Out
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <button className="neon-btn" onClick={() => setShowAuthModal(true)}>
+              Sign In
+            </button>
+          )}
         </div>
       </div>
-    </div>
+      {showAuthModal && <AuthModal onClose={() => setShowAuthModal(false)} />}
+    </nav>
   );
-};
-
-export default Navbar;
+}
