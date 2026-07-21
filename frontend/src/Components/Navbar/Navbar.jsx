@@ -10,6 +10,7 @@ import {
 import AuthModal from "../AuthModal";
 import { useAuth } from "../../context/AuthContext";
 import "./Navbar.css";
+
 export default function Navbar() {
   const { user, logout } = useAuth();
   const { cart } = useCart();
