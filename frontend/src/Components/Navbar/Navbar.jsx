@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import AuthModal from "../AuthModal";
 import { useAuth } from "../../context/AuthContext";
+import { useCart } from "../../context/CartContext";
 import "./Navbar.css";
 
 export default function Navbar() {
