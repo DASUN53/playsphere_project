@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { X } from "lucide-react";
 import "./AuthModal.css";
 export default function AuthModal({ onClose }) {

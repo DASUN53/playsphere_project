@@ -5,6 +5,8 @@ import { CartProvider } from "./context/CartContext";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 
+import Home from "./pages/Home";
+
 export default function App() {
   return (
     <AuthProvider>
@@ -14,7 +16,9 @@ export default function App() {
             <div className="cyber-grid-overlay"></div>
             <Navbar />
             <main className="app-main-content">
-              <Routes></Routes>
+              <Routes>
+                <Route path="/" element={<Home />} />
+              </Routes>
             </main>
             <Footer />
           </div>
