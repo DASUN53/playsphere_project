@@ -7,8 +7,9 @@ import {
   Gamepad2,
   ChevronDown,
 } from "lucide-react";
-import AuthModal from "../AuthModal";
+import AuthModal from "../AuthModal/AuthModal";
 import { useAuth } from "../../context/AuthContext";
+import { useCart } from "../../context/CartContext";
 import "./Navbar.css";
 
 export default function Navbar() {

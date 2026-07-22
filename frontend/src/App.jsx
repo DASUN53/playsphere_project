@@ -1,15 +1,29 @@
 import React from "react";
-import Navbar from "./Components/Navbar/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import { CartProvider } from "./context/CartContext";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
-const App = () => {
+import Home from "./pages/Home";
+
+export default function App() {
   return (
-    <div>
-      <div className="container" style={{ padding: "10px" }}>
-        <Navbar />
-        <main></main>
-      </div>
-    </div>
+    <AuthProvider>
+      <CartProvider>
+        <Router>
+          <div className="app-layout">
+            <div className="cyber-grid-overlay"></div>
+            <Navbar />
+            <main className="app-main-content">
+              <Routes>
+                <Route path="/" element={<Home />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </Router>
+      </CartProvider>
+    </AuthProvider>
   );
-};
-
-export default App;
+}

@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="footer-logo">
             <Gamepad2 className="logo-icon" />
             <span>
-              PLAY<span className="logo-highlight">SPHERE</span>
+              PLAY<span className="logo-highlight">RUNNERS</span>
             </span>
           </div>
           <p className="footer-description">
