@@ -69,6 +69,25 @@ export default function Home() {
           />
         </div>
       </section>
+
+      {/* Stats Section */}
+      <section className="stats-section">
+        <div className="stat-card glass-panel">
+          <Users className="stat-icon cyan" />
+          <div className="stat-value">1.2M+</div>
+          <div className="stat-label">Active Players</div>
+        </div>
+        <div className="stat-card glass-panel-pink">
+          <Trophy className="stat-icon pink" />
+          <div className="stat-value">$500K+</div>
+          <div className="stat-label">Prize Pools</div>
+        </div>
+        <div className="stat-card glass-panel">
+          <Play className="stat-icon purple" />
+          <div className="stat-value">150+</div>
+          <div className="stat-label">Daily Live Tourneys</div>
+        </div>
+      </section>
       {showAuthModal && <AuthModal onClose={() => setShowAuthModal(false)} />}
     </div>
   );
