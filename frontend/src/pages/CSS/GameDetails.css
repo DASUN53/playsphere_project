@@ -1,0 +1,31 @@
+.game-details-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.back-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: var(--transition-smooth);
+}
+
+.back-btn:hover {
+    color: var(--accent-cyan);
+    transform: translateX(-4px);
+}
+
+.back-icon {
+    width: 18px;
+    height: 18px;
+}

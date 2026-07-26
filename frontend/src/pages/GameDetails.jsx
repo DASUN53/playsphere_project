@@ -14,3 +14,12 @@ export default function GameDetails() {
   const { token } = useAuth();
   const navigate = useNavigate();
 }
+
+return (
+  <div className="game-details-container">
+    <button className="back-btn" onClick={() => navigate("/store")}>
+      <ArrowLeft className="back-icon" />
+      Back to Catalog
+    </button>
+  </div>
+);
