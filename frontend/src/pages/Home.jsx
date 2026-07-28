@@ -132,6 +132,51 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Matches schedule widget */}
+      <section className="matches-section">
+        <div className="matches-grid-container">
+          <div className="matches-info">
+            <h2 className="section-title">Match Calendar</h2>
+            <p className="matches-desc">
+              Follow local squad fixtures, active matches, and scoreboard
+              statistics live.
+            </p>
+            <button
+              className="neon-btn-solid"
+              onClick={() => navigate("/events")}
+            >
+              ALL TOURNAMENTS
+            </button>
+          </div>
+          <div className="matches-list glass-panel">
+            <h3>UPCOMING SQUAD FIXTURES</h3>
+            {upcomingMatches.length > 0 ? (
+              upcomingMatches.map((m) => (
+                <div key={m.id} className="match-row">
+                  <div className="match-team team-a">
+                    <span className="team-logo">{m.team_a_logo}</span>
+                    <span className="team-name">{m.team_a}</span>
+                  </div>
+                  <div className="match-vs">VS</div>
+                  <div className="match-team team-b">
+                    <span className="team-logo">{m.team_b_logo}</span>
+                    <span className="team-name">{m.team_b}</span>
+                  </div>
+                  <div className="match-meta">
+                    <Calendar className="meta-icon" />
+                    <span>{m.match_time}</span>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="no-matches">
+                No active fixtures seeded. Check later!
+              </p>
+            )}
+          </div>
+        </div>
+      </section>
       {showAuthModal && <AuthModal onClose={() => setShowAuthModal(false)} />}
     </div>
   );
