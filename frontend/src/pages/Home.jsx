@@ -88,6 +88,50 @@ export default function Home() {
           <div className="stat-label">Daily Live Tourneys</div>
         </div>
       </section>
+
+      {/* News / Features section */}
+      <section className="highlights-section">
+        <h2 className="section-title">Esports Spotlights</h2>
+        <div className="highlights-grid">
+          <div className="highlight-card glass-panel">
+            <img
+              src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=600&auto=format&fit=crop"
+              alt="News 1"
+            />
+            <div className="highlight-content">
+              <span className="card-badge cyan-bg">TOURNAMENT</span>
+              <h3>Nexus Champions Invitational: G2 vs Liquid Finals!</h3>
+              <p>
+                The Grand Finals of the year are set for July 20th. Watch G2
+                lock horns with Liquid in a five-map thriller.
+              </p>
+              <button
+                className="text-btn"
+                onClick={() => navigate("/events/1")}
+              >
+                View Event &rarr;
+              </button>
+            </div>
+          </div>
+          <div className="highlight-card glass-panel-pink">
+            <img
+              src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop"
+              alt="News 2"
+            />
+            <div className="highlight-content">
+              <span className="card-badge pink-bg">UPDATE</span>
+              <h3>Shadow Protocol v2.4 Cyber-Armor Balance Changelog</h3>
+              <p>
+                Developers tweak defensive shield values and boost silent steps
+                range for tactical matches.
+              </p>
+              <button className="text-btn" onClick={() => navigate("/store")}>
+                Check Game &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
       {showAuthModal && <AuthModal onClose={() => setShowAuthModal(false)} />}
     </div>
   );
