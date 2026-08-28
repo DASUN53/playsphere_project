@@ -61,7 +61,6 @@
 
 .nav-link:hover {
   color: var(--accent-cyan);
-  text-shadow: var(--neon-cyan-glow);
 }
 
 .nav-link::after {
@@ -97,7 +96,6 @@
 
 .cart-badge-container:hover {
   color: var(--accent-cyan);
-  filter: drop-shadow(0 0 5px var(--accent-cyan));
 }
 
 .action-icon {
@@ -144,7 +142,6 @@
 
 .user-profile-btn:hover {
   border-color: var(--accent-cyan);
-  box-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
 }
 
 .navbar-avatar {
