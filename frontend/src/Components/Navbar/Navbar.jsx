@@ -1,14 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import {
-  ShoppingCart,
-  User,
-  LogOut,
-  Gamepad2,
-  ChevronDown,
-} from "lucide-react";
-import AuthModal from "./AuthModal";
+import { useAuth } from "../../context/AuthContext";
+import { User, LogOut, Gamepad2, ChevronDown } from "lucide-react";
+import AuthModal from "../AuthModal/AuthModal";
 import "./Navbar.css";
 export default function Navbar() {
   const { user, logout } = useAuth();

@@ -1,0 +1,349 @@
+.store-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Spotlight Banner */
+.store-hero-banner {
+  height: 380px;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  padding: 40px;
+}
+
+.banner-content {
+  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.banner-badge {
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+  font-weight: bold;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.1em;
+}
+
+.banner-content h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.banner-content p {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.banner-price-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.banner-price {
+  font-size: 1.8rem;
+  font-family: var(--font-display);
+  font-weight: bold;
+  color: var(--accent-pink);
+  text-shadow: var(--neon-pink-glow);
+}
+
+/* Filters Toolbar */
+.store-filters-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: var(--bg-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 10px 16px;
+  flex: 1;
+  max-width: 450px;
+  gap: 10px;
+}
+
+.search-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+}
+
+.search-box input {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+.search-box input:focus {
+  outline: none;
+}
+
+.filter-selects {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  background: var(--bg-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 8px 12px;
+  gap: 8px;
+}
+
+.filter-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+}
+
+.filter-group select {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.filter-group select:focus {
+  outline: none;
+}
+
+/* Genre Tabs */
+.genre-tabs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.genre-tab-btn {
+  background: var(--bg-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  white-space: nowrap;
+}
+
+.genre-tab-btn:hover {
+  color: var(--accent-cyan);
+}
+
+.genre-tab-btn.active-genre {
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+  font-weight: bold;
+  border-color: var(--accent-cyan);
+  box-shadow: var(--neon-cyan-glow);
+}
+
+/* Games Catalog Grid */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.game-card {
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.game-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.game-card:hover .game-card-img {
+  transform: scale(1.08);
+}
+
+.game-card-genre {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(10, 6, 18, 0.85);
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.game-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.game-card-title {
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+
+.game-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.rating-star {
+  width: 14px;
+  height: 14px;
+  fill: #eab308;
+  color: #eab308;
+}
+
+.game-card-tagline {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.game-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.game-card-price {
+  font-family: var(--font-display);
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+.buy-card-btn {
+  background: transparent;
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-smooth);
+}
+
+.buy-card-btn:hover {
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+}
+
+.btn-cart-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.in-cart-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.owned-tag {
+  color: var(--accent-pink);
+  font-weight: bold;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-shadow: var(--neon-pink-glow);
+}
+
+.store-loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  padding: 40px;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-muted);
+  padding: 60px 20px;
+}
+
+@media (max-width: 768px) {
+  .store-hero-banner {
+    padding: 24px;
+    height: 320px;
+  }
+
+  .banner-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .store-filters-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box {
+    max-width: 100%;
+  }
+}
