@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Store from "./pages/Store";
 import GameDetails from "./pages/GameDetails";
 import Events from "./pages/Events";
+import EventDetails from "./pages/EventDetails";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
               <Route path="/store" element={<Store />} />
               <Route path="/store/:id" element={<GameDetails />} />
               <Route path="/events" element={<Events />} />
+              <Route path="/events/:id" element={<EventDetails />} />
             </Routes>
           </main>
           <Footer />
