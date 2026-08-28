@@ -1,20 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  ShoppingCart,
-  User,
-  LogOut,
-  Gamepad2,
-  ChevronDown,
-} from "lucide-react";
-import AuthModal from "../AuthModal/AuthModal";
 import { useAuth } from "../../context/AuthContext";
-import { useCart } from "../../context/CartContext";
+import { User, LogOut, Gamepad2, ChevronDown } from "lucide-react";
+import AuthModal from "../AuthModal/AuthModal";
 import "./Navbar.css";
-
 export default function Navbar() {
   const { user, logout } = useAuth();
-  const { cart } = useCart();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -44,12 +35,6 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="navbar-actions">
-          <Link to="/cart" className="cart-badge-container">
-            <ShoppingCart className="action-icon" />
-            {cart.length > 0 && (
-              <span className="cart-count">{cart.length}</span>
-            )}
-          </Link>
           {user ? (
             <div className="user-dropdown-container">
               <button

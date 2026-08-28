@@ -6,8 +6,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("playrunners_token"));
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const API_URL = "http://localhost:5000/api/auth";
-  
+  const API_URL = "http://localhost:5001/api/auth";
   useEffect(() => {
     if (token) {
       fetchUserProfile();

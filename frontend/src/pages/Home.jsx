@@ -38,7 +38,6 @@ export default function Home() {
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
-          <span className="hero-subtitle glow-active">THE ARENA AWAITS</span>
           <h1 className="hero-title">
             Level Up Your <br />
             <span className="text-gradient-cyan">Gaming Experience</span>
