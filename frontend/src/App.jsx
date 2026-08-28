@@ -6,6 +6,10 @@ import Footer from "./components/Footer/Footer";
 
 import Home from "./pages/Home";
 import Store from "./pages/Store";
+import GameDetails from "./pages/GameDetails";
+import Events from "./pages/Events";
+import EventDetails from "./pages/EventDetails";
+import Profile from "./pages/Profile";
 
 export default function App() {
   return (
@@ -18,6 +22,10 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/store" element={<Store />} />
+              <Route path="/store/:id" element={<GameDetails />} />
+              <Route path="/events" element={<Events />} />
+              <Route path="/events/:id" element={<EventDetails />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </main>
           <Footer />

@@ -1,0 +1,507 @@
+.profile-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Upper Dashboard */
+.profile-dashboard {
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.dashboard-avatar-block {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid var(--accent-cyan);
+  box-shadow: var(--neon-cyan-glow);
+}
+
+.dashboard-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-rank-badge {
+  background: rgba(217, 70, 239, 0.15);
+  color: var(--accent-pink);
+  border: 1px solid var(--accent-pink);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 3px 10px;
+  border-radius: 4px;
+  align-self: flex-start;
+  letter-spacing: 0.05em;
+  text-shadow: var(--neon-pink-glow);
+}
+
+.dashboard-details h2 {
+  font-size: 1.8rem;
+  line-height: 1.1;
+}
+
+.profile-bio {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Progression Level bar */
+.dashboard-progression {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0 40px;
+}
+
+.level-info {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+}
+
+.level-bar-track {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-primary);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.level-bar-fill {
+  height: 100%;
+  background: var(--accent-cyan);
+  box-shadow: var(--neon-cyan-glow);
+  border-radius: 4px;
+}
+
+/* Stats */
+.dashboard-stats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-stat-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ps-icon {
+  width: 24px;
+  height: 24px;
+}
+.ps-icon.cyan {
+  color: var(--accent-cyan);
+}
+.ps-icon.pink {
+  color: var(--accent-pink);
+}
+.ps-icon.purple {
+  color: var(--accent-purple);
+}
+
+.ps-val {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.ps-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+/* Tabs */
+.profile-tabs-bar {
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+}
+
+.profile-tabs-bar button {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding: 12px 24px;
+  font-family: var(--font-display);
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: var(--transition-smooth);
+}
+
+.profile-tabs-bar button:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.profile-tabs-bar button.active-tab {
+  background: rgba(0, 240, 255, 0.1);
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan);
+}
+
+/* Tab contents */
+.empty-profile-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 60px 40px;
+  text-align: center;
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.empty-tab-icon {
+  width: 50px;
+  height: 50px;
+  color: var(--text-muted);
+}
+
+.empty-profile-tab h3 {
+  font-size: 1.3rem;
+}
+
+.empty-profile-tab p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+/* Library Panel */
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.library-card {
+  overflow: hidden;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.lib-card-img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.lib-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lib-card-genre {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: bold;
+}
+
+.lib-card-body h3 {
+  font-size: 1.05rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* License Key Display in Library */
+.lib-key-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.lib-key-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 5px;
+  padding: 6px 10px;
+  overflow: hidden;
+}
+
+.lib-key-icon {
+  width: 12px;
+  height: 12px;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.lib-key-code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #a3f7bf;
+  text-shadow: 0 0 8px rgba(163, 247, 191, 0.35);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: all;
+}
+
+.lib-copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+  padding: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  color: var(--accent-cyan);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lib-copy-btn:hover {
+  background: rgba(0, 240, 255, 0.18);
+}
+
+.lib-copy-btn.copied {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #10b981;
+}
+
+.lib-no-key {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Tournaments Panel */
+.tournaments-list-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tourney-reg-row {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 24px;
+}
+
+.tourney-reg-img {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.tourney-reg-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reg-status-badge {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid #10b981;
+  font-size: 0.65rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  align-self: flex-start;
+  letter-spacing: 0.05em;
+}
+
+.tourney-reg-info h3 {
+  font-size: 1.2rem;
+}
+
+.tourney-reg-info p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.reg-team-marker {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+.tourney-reg-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.reg-meta-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+}
+
+.reg-meta-icon {
+  width: 12px;
+  height: 12px;
+}
+
+/* Settings Form */
+.settings-panel {
+  padding: 40px;
+}
+
+.settings-panel h2 {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+
+.settings-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 800px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.settings-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settings-form-group label {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+.settings-form-group input,
+.settings-form-group textarea {
+  background: var(--bg-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: var(--transition-smooth);
+}
+
+.settings-form-group input:focus,
+.settings-form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+}
+
+.update-settings-btn {
+  padding: 12px 24px;
+  font-weight: bold;
+  align-self: flex-start;
+}
+
+.settings-feedback {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #34d399;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+  text-align: center;
+  max-width: 800px;
+}
+
+.settings-feedback.error-feed {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+@media (max-width: 992px) {
+  .profile-dashboard {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .dashboard-avatar-block {
+    flex-direction: column;
+  }
+  .profile-rank-badge {
+    align-self: center;
+  }
+  .dashboard-progression {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px 0;
+  }
+  .dashboard-stats-grid {
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-tabs-bar {
+    flex-direction: column;
+  }
+  .tourney-reg-row {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  .tourney-reg-actions {
+    align-items: center;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
