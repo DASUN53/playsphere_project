@@ -9,6 +9,7 @@ import Store from "./pages/Store";
 import GameDetails from "./pages/GameDetails";
 import Events from "./pages/Events";
 import EventDetails from "./pages/EventDetails";
+import Profile from "./pages/Profile";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
               <Route path="/store/:id" element={<GameDetails />} />
               <Route path="/events" element={<Events />} />
               <Route path="/events/:id" element={<EventDetails />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </main>
           <Footer />
