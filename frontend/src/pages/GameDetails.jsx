@@ -9,7 +9,7 @@ import {
   ExternalLink,
   MessageSquare,
 } from "lucide-react";
-import "./GameDetails.css";
+import "./CSS/GameDetails.css";
 export default function GameDetails() {
   const { id } = useParams();
   const [game, setGame] = useState(null);
