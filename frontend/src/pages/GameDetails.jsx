@@ -22,7 +22,7 @@ export default function GameDetails() {
   const navigate = useNavigate();
   useEffect(() => {
     // Fetch game details
-    fetch(`http://localhost:5001/api/games/${id}`)
+    fetch(`http://localhost:5000/api/games/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setGame(data);
@@ -34,7 +34,7 @@ export default function GameDetails() {
       });
 
     // Fetch reviews
-    fetch(`http://localhost:5001/api/games/${id}/reviews`)
+    fetch(`http://localhost:5000/api/games/${id}/reviews`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) setReviews(data);
@@ -43,7 +43,7 @@ export default function GameDetails() {
 
     // Fetch library if logged in
     if (token) {
-      fetch("http://localhost:5001/api/collections", {
+      fetch("http://localhost:5000/api/collections", {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((res) => res.json())
@@ -58,7 +58,7 @@ export default function GameDetails() {
   const handleAddToCollection = async () => {
     if (!token) return alert("Please login first.");
     try {
-      const res = await fetch("http://localhost:5001/api/collections", {
+      const res = await fetch("http://localhost:5000/api/collections", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -82,7 +82,7 @@ export default function GameDetails() {
     e.preventDefault();
     if (!token) return alert("Please login first.");
     try {
-      const res = await fetch(`http://localhost:5001/api/games/${id}/reviews`, {
+      const res = await fetch(`http://localhost:5000/api/games/${id}/reviews`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -95,7 +95,7 @@ export default function GameDetails() {
         alert(data.message);
         setReviewText("");
         // Refetch reviews
-        fetch(`http://localhost:5001/api/games/${id}/reviews`)
+        fetch(`http://localhost:5000/api/games/${id}/reviews`)
           .then((r) => r.json())
           .then((d) => {
             if (Array.isArray(d)) setReviews(d);

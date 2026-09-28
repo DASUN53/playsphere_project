@@ -1,6 +1,6 @@
--- Playrunners Database Schema
-CREATE DATABASE IF NOT EXISTS playrunners;
-USE playrunners;
+-- PlaySphere Database Schema
+CREATE DATABASE IF NOT EXISTS playsphere;
+USE playsphere;
 -- Users Table
 CREATE TABLE IF NOT EXISTS users (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -80,12 +80,24 @@ CREATE TABLE IF NOT EXISTS orders (
   payment_status VARCHAR(20) DEFAULT 'completed',
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
--- Order Items Table
-CREATE TABLE IF NOT EXISTS order_items (
+-- Collections Table
+CREATE TABLE IF NOT EXISTS collections (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  order_id INT NOT NULL,
+  user_id INT NOT NULL,
   game_id INT NOT NULL,
-  price DECIMAL(10, 2) NOT NULL,
-  FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
-  FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE,
+  UNIQUE KEY unique_user_game (user_id, game_id)
+);
+-- Reviews Table
+CREATE TABLE IF NOT EXISTS reviews (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  game_id INT NOT NULL,
+  user_id INT NOT NULL,
+  rating INT NOT NULL DEFAULT 5,
+  comment TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );

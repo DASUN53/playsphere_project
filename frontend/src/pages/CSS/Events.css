@@ -138,7 +138,6 @@
   background: var(--accent-cyan);
   color: var(--bg-primary);
   border-color: var(--accent-cyan);
-  box-shadow: var(--neon-cyan-glow);
 }
 
 /* Events Grid */

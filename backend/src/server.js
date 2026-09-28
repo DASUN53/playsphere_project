@@ -8,6 +8,7 @@ const authRoutes = require("./routes/auth");
 const gameRoutes = require("./routes/games");
 const eventRoutes = require("./routes/events");
 const orderRoutes = require("./routes/orders");
+const collectionRoutes = require("./routes/collections");
 const app = express();
 const PORT = process.env.PORT || 5000;
 // Middleware
@@ -19,10 +20,11 @@ app.use("/api/auth", authRoutes);
 app.use("/api/games", gameRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/collections", collectionRoutes);
 // Root test route
 app.get("/", (req, res) => {
   res.json({
-    message: "Welcome to the Playrunners E-sports API Portal!",
+    message: "Welcome to the PlaySphere E-sports API Portal!",
     status: "online",
     version: "1.0.0",
   });
@@ -35,6 +37,6 @@ app.use((err, req, res, next) => {
 // Initialize database connection, then start server
 db.initDbPool().then(() => {
   app.listen(PORT, () => {
-    console.log(`🚀 Playrunners backend running on port ${PORT}`);
+    console.log(`🚀 PlaySphere backend running on port ${PORT}`);
   });
 });
