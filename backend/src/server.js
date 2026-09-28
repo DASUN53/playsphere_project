@@ -22,7 +22,7 @@ app.use("/api/orders", orderRoutes);
 // Root test route
 app.get("/", (req, res) => {
   res.json({
-    message: "Welcome to the Playrunners E-sports API Portal!",
+    message: "Welcome to the PlaySphere E-sports API Portal!",
     status: "online",
     version: "1.0.0",
   });
@@ -35,6 +35,6 @@ app.use((err, req, res, next) => {
 // Initialize database connection, then start server
 db.initDbPool().then(() => {
   app.listen(PORT, () => {
-    console.log(`🚀 Playrunners backend running on port ${PORT}`);
+    console.log(`🚀 PlaySphere backend running on port ${PORT}`);
   });
 });

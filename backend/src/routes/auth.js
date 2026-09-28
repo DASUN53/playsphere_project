@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const db = require("../config/db");
 const authMiddleware = require("../middleware/auth");
-const JWT_SECRET = process.env.JWT_SECRET || "playrunners_secret_key";
+const JWT_SECRET = process.env.JWT_SECRET || "playsphere_secret_key";
 // Register User
 router.post("/register", async (req, res) => {
   const { username, email, password } = req.body;

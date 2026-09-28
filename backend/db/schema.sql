@@ -1,6 +1,6 @@
--- Playrunners Database Schema
-CREATE DATABASE IF NOT EXISTS playrunners;
-USE playrunners;
+-- PlaySphere Database Schema
+CREATE DATABASE IF NOT EXISTS playsphere;
+USE playsphere;
 -- Users Table
 CREATE TABLE IF NOT EXISTS users (
   id INT AUTO_INCREMENT PRIMARY KEY,

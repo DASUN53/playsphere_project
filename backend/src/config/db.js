@@ -76,7 +76,7 @@ let mockDb = {
         "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
       rating: 4.2,
       release_date: "2026-01-15",
-      publisher: "Playrunners Games",
+      publisher: "PlaySphere Games",
       developer: "Vector Forge Studio",
       sys_req_min:
         "OS: Windows 10 | CPU: Intel i3-6100 | RAM: 8 GB | GPU: GTX 960 | Storage: 20 GB",
@@ -437,7 +437,7 @@ const query = async (sqlText, params = []) => {
       rank_name: "Rookie",
       level: 1,
       xp: 0,
-      bio: "New gamer in Playrunners.",
+      bio: "New gamer in PlaySphere.",
       win_rate: 0,
       total_hours: 0,
       matches_played: 0,

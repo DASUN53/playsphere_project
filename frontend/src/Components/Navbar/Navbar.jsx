@@ -20,7 +20,7 @@ export default function Navbar() {
         <Link to="/" className="navbar-logo">
           <Gamepad2 className="logo-icon" />
           <span>
-            PLAY<span className="logo-highlight">RUNNERS</span>
+            PLAY<span className="logo-highlight">SPHERE</span>
           </span>
         </Link>
         <div className="navbar-links">

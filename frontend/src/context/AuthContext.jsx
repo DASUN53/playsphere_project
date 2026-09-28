@@ -3,7 +3,7 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem("playrunners_token"));
+  const [token, setToken] = useState(localStorage.getItem("playsphere_token"));
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const API_URL = "http://localhost:5001/api/auth";
@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
       if (!res.ok) {
         throw new Error(data.error || "Registration failed.");
       }
-      localStorage.setItem("playrunners_token", data.token);
+      localStorage.setItem("playsphere_token", data.token);
       setToken(data.token);
       setUser(data.user);
       return { success: true };
@@ -68,7 +68,7 @@ export const AuthProvider = ({ children }) => {
       if (!res.ok) {
         throw new Error(data.error || "Login failed.");
       }
-      localStorage.setItem("playrunners_token", data.token);
+      localStorage.setItem("playsphere_token", data.token);
       setToken(data.token);
       setUser(data.user);
       return { success: true };
@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
   const logout = () => {
-    localStorage.removeItem("playrunners_token");
+    localStorage.removeItem("playsphere_token");
     setToken(null);
     setUser(null);
   };

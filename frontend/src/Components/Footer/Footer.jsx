@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="footer-logo">
             <Gamepad2 className="logo-icon" />
             <span>
-              PLAY<span className="logo-highlight">RUNNERS</span>
+              PLAY<span className="logo-highlight">SPHERE</span>
             </span>
           </div>
           <p className="footer-description">
@@ -45,7 +45,7 @@ export default function Footer() {
       </div>
       <div className="footer-bottom">
         <p>
-          &copy; {new Date().getFullYear()} Playrunners Esports. All Rights
+          &copy; {new Date().getFullYear()} PlaySphere Esports. All Rights
           Reserved. Level up responsibly.
         </p>
       </div>

@@ -80,7 +80,7 @@ export default function AuthModal({ onClose }) {
             <label>Email Address</label>
             <input
               type="email"
-              placeholder="gamer@playrunners.com"
+              placeholder="gamer@playsphere.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
