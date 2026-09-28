@@ -27,7 +27,7 @@ export default function Events() {
   // Fetch local platform tournaments (including Sri Lanka seeded ones)
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5001/api/events")
+    fetch("http://localhost:5000/api/events")
       .then((res) => res.json())
       .then((data) => {
         setTournaments(data);
@@ -43,7 +43,7 @@ export default function Events() {
   useEffect(() => {
     if (activeTab === "global" && globalTournaments.length === 0) {
       setGlobalLoading(true);
-      fetch("http://localhost:5001/api/events/external/global")
+      fetch("http://localhost:5000/api/events/external/global")
         .then((res) => res.json())
         .then((data) => {
           setGlobalTournaments(data.data || []);

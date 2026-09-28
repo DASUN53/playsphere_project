@@ -8,6 +8,7 @@ const authRoutes = require("./routes/auth");
 const gameRoutes = require("./routes/games");
 const eventRoutes = require("./routes/events");
 const orderRoutes = require("./routes/orders");
+const collectionRoutes = require("./routes/collections");
 const app = express();
 const PORT = process.env.PORT || 5000;
 // Middleware
@@ -19,6 +20,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/games", gameRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/collections", collectionRoutes);
 // Root test route
 app.get("/", (req, res) => {
   res.json({

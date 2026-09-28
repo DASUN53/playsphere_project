@@ -37,7 +37,7 @@ export default function EventDetails() {
 
   useEffect(() => {
     // Fetch Tournament Metadata
-    fetch(`http://localhost:5001/api/events/${id}`)
+    fetch(`http://localhost:5000/api/events/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setTournament(data);
@@ -48,7 +48,7 @@ export default function EventDetails() {
         setLoading(false);
       });
     // Fetch Matches
-    fetch(`http://localhost:5001/api/events/${id}/matches`)
+    fetch(`http://localhost:5000/api/events/${id}/matches`)
       .then((res) => res.json())
       .then((data) => {
         setMatches(data);
@@ -63,7 +63,7 @@ export default function EventDetails() {
   const checkRegistration = async () => {
     try {
       const res = await fetch(
-        `http://localhost:5001/api/events/${id}/register-status`,
+        `http://localhost:5000/api/events/${id}/register-status`,
         {
           headers: { Authorization: `Bearer ${token}` },
         },
@@ -108,7 +108,7 @@ export default function EventDetails() {
     }
     try {
       const res = await fetch(
-        `http://localhost:5001/api/events/${id}/register`,
+        `http://localhost:5000/api/events/${id}/register`,
         {
           method: "POST",
           headers: {

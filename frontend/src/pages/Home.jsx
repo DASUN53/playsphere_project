@@ -99,10 +99,10 @@ export default function Home() {
             />
             <div className="highlight-content">
               <span className="card-badge cyan-bg">TOURNAMENT</span>
-              <h3>Nexus Champions Invitational: G2 vs Liquid Finals!</h3>
+              <h3>VALORANT Champions: G2 vs Team Liquid Finals!</h3>
               <p>
-                The Grand Finals of the year are set for July 20th. Watch G2
-                lock horns with Liquid in a five-map thriller.
+                The Grand Finals of the year are set. Watch G2 Esports
+                lock horns with Team Liquid in a thrilling best-of-5 showdown.
               </p>
               <button
                 className="text-btn"
@@ -119,10 +119,10 @@ export default function Home() {
             />
             <div className="highlight-content">
               <span className="card-badge pink-bg">UPDATE</span>
-              <h3>Shadow Protocol v2.4 Cyber-Armor Balance Changelog</h3>
+              <h3>Counter-Strike 2: Sub-Tick & Dynamic Smokes Overhaul</h3>
               <p>
-                Developers tweak defensive shield values and boost silent steps
-                range for tactical matches.
+                Valve releases major competitive patch updating map geometry,
+                audio precision, and smoke volumetric mechanics.
               </p>
               <button className="text-btn" onClick={() => navigate("/store")}>
                 Check Game &rarr;

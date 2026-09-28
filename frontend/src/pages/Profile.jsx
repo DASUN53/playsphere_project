@@ -51,7 +51,7 @@ export default function Profile() {
       try {
         setLoading(true);
         // Library
-        const libRes = await fetch("http://localhost:5001/api/collections", {
+        const libRes = await fetch("http://localhost:5000/api/collections", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const libData = await libRes.json();
@@ -62,11 +62,11 @@ export default function Profile() {
         // Registrations
         // Call generic route registrations (backend falls back to user specific search inside registrations db)
         // Express Router provides specific handler
-        const regRes = await fetch("http://localhost:5001/api/auth/me", {
+        const regRes = await fetch("http://localhost:5000/api/auth/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
         // In our database.js fallbacks, SELECT * FROM registrations WHERE user_id = ? fetches tournaments
-        const regsData = await fetch("http://localhost:5001/api/events", {
+        const regsData = await fetch("http://localhost:5000/api/events", {
           headers: { Authorization: `Bearer ${token}` },
         }); // wait let's query custom route for registrations:
         // Actually, we can fetch all registrations in db matching user
@@ -85,9 +85,9 @@ export default function Profile() {
         // Let's create a route: `GET /api/events/registrations` in `backend/routes/events.js` to return all registrations for a user.
         // Wait! Let's write `Profile.jsx` first, then make a quick replacement to `backend/routes/events.js` to expose that route! This is extremely logical.
 
-        // Let's fetch registrations from `http://localhost:5001/api/events/my-registrations`
+        // Fetch registrations from `http://localhost:5000/api/events/my-registrations`
         const regListRes = await fetch(
-          "http://localhost:5001/api/events/my-registrations",
+          "http://localhost:5000/api/events/my-registrations",
           {
             headers: { Authorization: `Bearer ${token}` },
           },

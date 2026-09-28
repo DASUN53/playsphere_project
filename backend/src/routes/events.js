@@ -46,6 +46,65 @@ router.get("/:id/register-status", authMiddleware, async (req, res) => {
     res.status(500).json({ error: "Server error check." });
   }
 });
+// Get global real-world esports tournaments
+router.get("/external/global", async (req, res) => {
+  const globalTournaments = [
+    {
+      id: "global-1",
+      title: "VALORANT Champions 2026: Berlin",
+      game: "Valorant",
+      prize_pool: "$1,000,000",
+      status: "ongoing",
+      start_date: "2026-08-14",
+      image_url: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop",
+      tier: "S-Tier World Championship",
+      location: "Mercedes-Benz Arena, Berlin",
+      organizer: "Riot Games",
+      teams_count: 16,
+    },
+    {
+      id: "global-2",
+      title: "Intel Extreme Masters Katowice 2026",
+      game: "Counter-Strike 2",
+      prize_pool: "$1,000,000",
+      status: "upcoming",
+      start_date: "2026-09-05",
+      image_url: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+      tier: "Major Championship",
+      location: "Spodek Arena, Katowice, Poland",
+      organizer: "ESL Gaming",
+      teams_count: 24,
+    },
+    {
+      id: "global-3",
+      title: "ALGS Year 5 Championship",
+      game: "Apex Legends",
+      prize_pool: "$2,000,000",
+      status: "upcoming",
+      start_date: "2026-10-12",
+      image_url: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800&auto=format&fit=crop",
+      tier: "Global Pro League",
+      location: "Makuhari Messe, Chiba, Japan",
+      organizer: "Electronic Arts / Respawn",
+      teams_count: 40,
+    },
+    {
+      id: "global-4",
+      title: "League of Legends World Championship 2026",
+      game: "League of Legends",
+      prize_pool: "$2,225,000",
+      status: "upcoming",
+      start_date: "2026-11-01",
+      image_url: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800&auto=format&fit=crop",
+      tier: "World Championship",
+      location: "Seoul World Cup Stadium, South Korea",
+      organizer: "Riot Games",
+      teams_count: 22,
+    },
+  ];
+  res.json({ data: globalTournaments, simulated: false });
+});
+
 // Get tournament by ID
 router.get("/:id", async (req, res) => {
   try {

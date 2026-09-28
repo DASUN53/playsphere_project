@@ -14,7 +14,7 @@ export default function Store() {
   const navigate = useNavigate();
   useEffect(() => {
     // Fetch games
-    fetch("http://localhost:5001/api/games")
+    fetch("http://localhost:5000/api/games")
       .then((res) => res.json())
       .then((data) => {
         setGames(data);
@@ -26,7 +26,7 @@ export default function Store() {
       });
     // Fetch owned library if logged in
     if (token) {
-      fetch("http://localhost:5001/api/collections", {
+      fetch("http://localhost:5000/api/collections", {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((res) => res.json())
@@ -49,7 +49,7 @@ export default function Store() {
     e.stopPropagation();
     if (!token) return alert("Please login first.");
     try {
-      const res = await fetch("http://localhost:5001/api/collections", {
+      const res = await fetch("http://localhost:5000/api/collections", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
