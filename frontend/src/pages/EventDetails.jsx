@@ -13,7 +13,7 @@ import {
   User,
   Mail,
 } from "lucide-react";
-import AuthModal from "../components/AuthModal/AuthModal";
+import AuthModal from "../Components/AuthModal/AuthModal";
 import "./CSS/EventDetails.css";
 
 export default function EventDetails() {
