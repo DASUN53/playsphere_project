@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { Calendar, Play, Trophy, Users, Star } from "lucide-react";
-import AuthModal from "../components/AuthModal/AuthModal";
+import AuthModal from "../Components/AuthModal/AuthModal";
 import "./CSS/Home.css";
 export default function Home() {
   const { user } = useAuth();
