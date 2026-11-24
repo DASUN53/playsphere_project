@@ -13,6 +13,20 @@
       "win_rate": 68,
       "total_hours": 1240,
       "matches_played": 350
+    },
+    {
+      "id": 2,
+      "username": "das",
+      "email": "Dasun@gmail.com",
+      "password_hash": "$2b$10$0EOyMgRR/Gt.HfWj822Z6ueWmRT3YRDRlZF5QAxfuOcNqESzg6DaC",
+      "avatar_url": "https://api.dicebear.com/7.x/pixel-art/svg?seed=das",
+      "rank_name": "Rookie",
+      "level": 1,
+      "xp": 0,
+      "bio": "New gamer in PlaySphere.",
+      "win_rate": 0,
+      "total_hours": 0,
+      "matches_played": 0
     }
   ],
   "games": [
