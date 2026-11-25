@@ -21,6 +21,26 @@ app.use("/api/games", gameRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/collections", collectionRoutes);
+// Deep Health Check Route (tests Express + MySQL connection)
+app.get("/api/health", async (req, res) => {
+  try {
+    // Lightweight ping query against MySQL
+    await db.query("SELECT 1");
+    res.status(200).json({
+      status: "healthy",
+      database: "connected",
+      uptime: process.uptime(),
+      timestamp: new Date().toISOString(),
+    });
+  } catch (err) {
+    res.status(503).json({
+      status: "unhealthy",
+      database: "disconnected",
+      error: err.message,
+      timestamp: new Date().toISOString(),
+    });
+  }
+});
 // Root test route
 app.get("/", (req, res) => {
   res.json({

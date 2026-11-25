@@ -16,10 +16,7 @@ RUN npm run build
 # ==========================================
 # Stage 2: Production Nginx Server
 # ==========================================
-FROM nginx:alpine
-
-# Remove default Nginx website
-RUN rm -rf /usr/share/nginx/html/*
+FROM nginxinc/nginx-unprivileged:alpine
 
 # Copy built production assets from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
@@ -27,8 +24,8 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 # Copy custom Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expose port 80
-EXPOSE 80
+# Expose non-privileged port
+EXPOSE 8080
 
 # Start Nginx in foreground
 CMD ["nginx", "-g", "daemon off;"]
