@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: ["main", "development-new"]
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   # ----------------------------------------------------
   # Job 1: Frontend Build Verification (Runs in Parallel)
@@ -104,3 +108,107 @@ jobs:
           GAMES=$(curl -s http://127.0.0.1:5000/api/games)
           echo "Games count check: $GAMES"
           echo $GAMES | grep 'VALORANT'
+  # ----------------------------------------------------
+  # Job 3: DevSecOps Vulnerability Scan (Trivy)
+  # ----------------------------------------------------
+  security-scan:
+    name: Container Vulnerability Scan (Trivy)
+    runs-on: ubuntu-latest
+    needs: [frontend-ci, backend-ci]
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      # 1. Build local container images for scanning
+      - name: Build Backend Image
+        run: docker build -t playsphere-backend:${{ github.sha }} ./backend
+
+      - name: Build Frontend Image
+        run: docker build -t playsphere-frontend:${{ github.sha }} ./frontend
+
+      # 2. Scan Backend Image for Critical/High CVEs
+      - name: Scan Backend Image with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: playsphere-backend:${{ github.sha }}
+          format: "table"
+          exit-code: "0" # Set to '1' if you want unpatched CVEs to fail the build
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
+
+      # 3. Scan Frontend Image for Critical/High CVEs
+      - name: Scan Frontend Image with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: playsphere-frontend:${{ github.sha }}
+          format: "table"
+          exit-code: "0"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
+
+  # ----------------------------------------------------
+  # Job 4: Continuous Delivery (Publish to GHCR)
+  # ----------------------------------------------------
+  publish-images:
+    name: Build & Push Images to GHCR
+    runs-on: ubuntu-latest
+    needs: [security-scan]
+    # Only publish official images when code is pushed/merged to 'main'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      # Set up Docker Buildx for modern, cached builds
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Authenticate directly to GitHub Container Registry using built-in GITHUB_TOKEN
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Extract metadata (tags, labels) for Backend
+      - name: Extract Backend Metadata
+        id: meta-backend
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}-backend
+          tags: |
+            type=raw,value=latest
+            type=sha,format=short,prefix=sha-
+
+      # Build and Push Backend Image
+      - name: Build and Push Backend Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          push: true
+          tags: ${{ steps.meta-backend.outputs.tags }}
+          labels: ${{ steps.meta-backend.outputs.labels }}
+
+      # Extract metadata (tags, labels) for Frontend
+      - name: Extract Frontend Metadata
+        id: meta-frontend
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}-frontend
+          tags: |
+            type=raw,value=latest
+            type=sha,format=short,prefix=sha-
+
+      # Build and Push Frontend Image
+      - name: Build and Push Frontend Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          push: true
+          tags: ${{ steps.meta-frontend.outputs.tags }}
+          labels: ${{ steps.meta-frontend.outputs.labels }}
