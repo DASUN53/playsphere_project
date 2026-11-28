@@ -1,28 +1,26 @@
 name: PlaySphere CI Pipeline
 
-# 1. Trigger: When should this workflow run?
 on:
   push:
     branches: ["main", "development-new"]
   pull_request:
     branches: ["main", "development-new"]
 
-# 2. Jobs: What tasks should run?
 jobs:
+  # ----------------------------------------------------
+  # Job 1: Frontend Build Verification (Runs in Parallel)
+  # ----------------------------------------------------
   frontend-ci:
     name: Frontend Quality & Build Check
     runs-on: ubuntu-latest
-
     defaults:
       run:
         working-directory: ./frontend
 
     steps:
-      # Step 1: Check out the repository code onto the runner VM
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
-      # Step 2: Install Node.js 20 with npm caching for faster builds
       - name: Setup Node.js 20
         uses: actions/setup-node@v4
         with:
@@ -30,10 +28,79 @@ jobs:
           cache: "npm"
           cache-dependency-path: frontend/package-lock.json
 
-      # Step 3: Install clean dependencies
       - name: Install Frontend Dependencies
         run: npm ci
 
-      # Step 4: Run Vite Production Build
       - name: Build Frontend (Vite)
         run: npm run build
+
+  # ----------------------------------------------------
+  # Job 2: Backend Integration & API Health Check
+  # ----------------------------------------------------
+  backend-ci:
+    name: Backend API & Database Integration
+    runs-on: ubuntu-latest
+
+    # Spin up ephemeral MySQL service container inside GitHub Actions
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: rootpassword
+          MYSQL_DATABASE: playsphere
+          MYSQL_USER: playsphere_user
+          MYSQL_PASSWORD: playsphere_pass
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
+
+    defaults:
+      run:
+        working-directory: ./backend
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install Backend Dependencies
+        run: npm ci
+
+      # Load database schema and initial seed data into the MySQL service
+      - name: Seed Test Database
+        run: |
+          mysql -h 127.0.0.1 -P 3306 -u playsphere_user -pplaysphere_pass playsphere < db/schema.sql
+          mysql -h 127.0.0.1 -P 3306 -u playsphere_user -pplaysphere_pass playsphere < db/seed.sql
+
+      # Start backend Express server in background (&)
+      - name: Start Backend Server
+        env:
+          PORT: 5000
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_USER: playsphere_user
+          DB_PASSWORD: playsphere_pass
+          DB_NAME: playsphere
+          JWT_SECRET: test_ci_jwt_secret_key
+        run: |
+          node src/server.js &
+          sleep 5
+
+      # Verify the server and database are healthy and returning data
+      - name: Test /api/health Endpoint
+        run: |
+          RESPONSE=$(curl -s http://127.0.0.1:5000/api/health)
+          echo "Health response: $RESPONSE"
+          echo $RESPONSE | grep '"status":"healthy"'
+
+      - name: Test /api/games Endpoint
+        run: |
+          GAMES=$(curl -s http://127.0.0.1:5000/api/games)
+          echo "Games count check: $GAMES"
+          echo $GAMES | grep 'VALORANT'
