@@ -104,3 +104,43 @@ jobs:
           GAMES=$(curl -s http://127.0.0.1:5000/api/games)
           echo "Games count check: $GAMES"
           echo $GAMES | grep 'VALORANT'
+  # ----------------------------------------------------
+  # Job 3: DevSecOps Vulnerability Scan (Trivy)
+  # ----------------------------------------------------
+  security-scan:
+    name: Container Vulnerability Scan (Trivy)
+    runs-on: ubuntu-latest
+    needs: [frontend-ci, backend-ci]
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      # 1. Build local container images for scanning
+      - name: Build Backend Image
+        run: docker build -t playsphere-backend:${{ github.sha }} ./backend
+
+      - name: Build Frontend Image
+        run: docker build -t playsphere-frontend:${{ github.sha }} ./frontend
+
+      # 2. Scan Backend Image for Critical/High CVEs
+      - name: Scan Backend Image with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: playsphere-backend:${{ github.sha }}
+          format: "table"
+          exit-code: "0" # Set to '1' if you want unpatched CVEs to fail the build
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
+
+      # 3. Scan Frontend Image for Critical/High CVEs
+      - name: Scan Frontend Image with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: playsphere-frontend:${{ github.sha }}
+          format: "table"
+          exit-code: "0"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
